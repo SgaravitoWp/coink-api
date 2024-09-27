@@ -83,4 +83,7 @@ dotnet run
 
 ## Soporte y Contacto
 
-Para consultas técnicas o soporte, mi correo de contacto es sgaravito@unal.edu.co. 
+Para consultas técnicas o soporte.
+- Mi correo de contacto es sgaravito@unal.edu.co. 
+- Mi perfil de [LinkedIn](www.linkedin.com/in/samuel-jacobo-garavito-segura).
+- Mi perfil de [GitHub](https://github.com/SgaravitoWp)
