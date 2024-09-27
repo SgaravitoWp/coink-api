@@ -35,7 +35,7 @@ namespace CoinkRestAPI.CORE.DTOs
         /// ID del usuario requerido, debe contener entre 6 y 12 dígitos.
         /// </summary>
         [Required(ErrorMessage = "The user ID is required.")]
-        [RegularExpression(@"^\d+$", ErrorMessage = "The user ID number can only contain digits.")]
+        [RegularExpression(@"^\d+$", ErrorMessage = "The user ID can only contain digits.")]
         [StringLength(12, MinimumLength = 6, ErrorMessage = "The user ID must be between 6 and 12 digits long.")]
         public string user_id { get; set; }
 
