@@ -46,7 +46,15 @@ Ejecute el script `init_db.bat` ubicado en el directorio `postgresql_db`. Este s
 - Se le solicitará ingresar el usuario y contraseña para la autenticación.
 - Opcionalmente, puede insertar datos de prueba correspondientes a la información geográfica de Colombia.
 
-### 2. Configuración de Secrets
+### 2. Configuración de Dependencias
+
+En el directorio `/CoinkRestAPI`, ejecute el siguientes comando para restaurar las dependencias del proyecto:
+
+````
+dotnet restore
+````
+
+### 3. Configuración de Secrets
 
 En el directorio `/CoinkRestAPI`, ejecute los siguientes comandos para configurar las variables de conexión a la base de datos:
 
@@ -56,13 +64,6 @@ dotnet user-secrets set "USERNAME" "Su_username"
 dotnet user-secrets set "PASSWORD" "Su_contraseña"
 ````
 
-### 3. Configuración de Dependencias
-
-En el directorio `/CoinkRestAPI`, ejecute el siguientes comando para restaurar las dependencias del proyecto:
-
-````
-dotnet restore
-````
 
 ### 4. Compilación de la API
 
