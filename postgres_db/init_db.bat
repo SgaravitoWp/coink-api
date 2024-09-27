@@ -9,6 +9,7 @@ echo Tables ...
 echo Stored Procedures ...
 psql -U %user%  -f setup_db.sql -f setup_tables.sql -f setup_sp.sql 
 
+rem Preguntar si se desean cargar datos de prueba
 SET /P dummie=Desea cargar datos de prueba a las tablas ? (Y\N): 
 
 IF "%dummie%"=="Y" (

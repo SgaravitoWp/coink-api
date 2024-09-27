@@ -5,11 +5,24 @@ using Npgsql;
 
 namespace CoinRestAPI.Infrastructure.Data.Repositories
 {
+    /// <summary>
+    /// Repositorio para manejar operaciones relacionadas con usuarios.
+    /// </summary>
     public class UserRepository : ConnectionRepository, IUserRepository
     {
+        /// <summary>
+        /// Constructor del repositorio de usuarios.
+        /// </summary>
+        /// <param name="configuration">Configuración de la aplicación.</param>
         public UserRepository(IConfiguration configuration) : base(configuration)
         {
         }
+
+        /// <summary>
+        /// Crea un nuevo usuario en la base de datos.
+        /// </summary>
+        /// <param name="user">Datos del usuario a crear.</param>
+        /// <returns>El usuario creado.</returns>
         public async Task<User> CreateUserAsync(UserPost user)
         {
             using (var connection = new NpgsqlConnection(_connectionString))
@@ -38,9 +51,6 @@ namespace CoinRestAPI.Infrastructure.Data.Repositories
                         state_id = user.state_id,
                         city_id = user.city_id,
                     };
-                    
-
-                    
                 }
             }
         }

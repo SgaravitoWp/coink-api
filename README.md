@@ -59,6 +59,7 @@ dotnet restore
 En el directorio `/CoinkRestAPI`, ejecute los siguientes comandos para configurar las variables de conexión a la base de datos:
 
 ````
+dotnet user-secrets init
 dotnet user-secrets set "HOST" "Su_host"
 dotnet user-secrets set "USERNAME" "Su_username"
 dotnet user-secrets set "PASSWORD" "Su_contraseña"

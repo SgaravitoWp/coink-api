@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS cities;
 DROP TABLE IF EXISTS states;
 DROP TABLE IF EXISTS countries;
 
+-- Habilitación del uso de uuid.
 CREATE EXTENSION pgcrypto;
 
 -- Creación de la tabla de países
@@ -33,9 +34,9 @@ CREATE TABLE cities (
 -- Creación de la tabla de usuarios
 CREATE TABLE users (
     id VARCHAR(36) PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id INT NOT NULL,
+    user_id VARCHAR(12) NOT NULL,
     name VARCHAR(100) NOT NULL,
-    phone VARCHAR(20) NOT NULL,
+    phone VARCHAR(15) NOT NULL,
     address VARCHAR(255) NOT NULL,
     country_id VARCHAR(3) NOT NULL,
     state_id INT NOT NULL,

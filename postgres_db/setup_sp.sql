@@ -32,9 +32,9 @@ $$ LANGUAGE plpgsql;
 
 -- Función para insertar un nuevo usuario
 CREATE OR REPLACE FUNCTION InsertUser(
-    id_user INT,
+    id_user VARCHAR(12),
     name VARCHAR(100),
-    phone VARCHAR(20),
+    phone VARCHAR(15),
     address VARCHAR(255),
     id_country VARCHAR(3),
     id_state INT,

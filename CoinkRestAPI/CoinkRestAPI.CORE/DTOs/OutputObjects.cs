@@ -1,56 +1,78 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+
 namespace CoinkRestAPI.CORE.DTOs
 {
-   
-    
-    // Clase que representa una respuesta de error
+    /// <summary>
+    /// Clase que representa una respuesta de error.
+    /// </summary>
     public class ErrorResponse
     {
-        // Propiedad que representa el tipo de error (opcional)
+        /// <summary>
+        /// Tipo de error (opcional).
+        /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? type { get; set; }
 
-        // Propiedad que indica si la operación fue exitosa (opcional)
+        /// <summary>
+        /// Indica si la operación fue exitosa (opcional).
+        /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? success { get; set; }
 
-        // Propiedad que representa el título del error (obligatoria)
+        /// <summary>
+        /// Título del error (obligatorio).
+        /// </summary>
         [Required]
         public string title { get; set; }
 
-        // Propiedad que representa los errores detallados (opcional)
+        /// <summary>
+        /// Errores detallados (opcional).
+        /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Dictionary<string, string[]>? errors { get; set; }
 
-        // Propiedad que representa el ID de seguimiento (opcional)
+        /// <summary>
+        /// ID de seguimiento (opcional).
+        /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? traceId { get; set; }
 
-        // Propiedad que representa el estado HTTP de la respuesta (obligatoria)
+        /// <summary>
+        /// Estado HTTP de la respuesta (obligatorio).
+        /// </summary>
         [Required]
         public int status { get; set; }
     }
 
+    /// <summary>
+    /// Clase genérica que representa una respuesta exitosa.
+    /// </summary>
+    /// <typeparam name="T">Tipo de datos contenidos en la respuesta.</typeparam>
     public class SuccessResponse<T>
     {
-        // Propiedad que indica si la operación fue exitosa (obligatoria)
+        /// <summary>
+        /// Indica si la operación fue exitosa (obligatorio).
+        /// </summary>
         [Required]
         public bool success { get; set; }
 
-        // Propiedad que representa un mensaje de éxito (obligatoria)
+        /// <summary>
+        /// Mensaje de éxito (obligatorio).
+        /// </summary>
         [Required]
         public string message { get; set; }
 
-        // Propiedad que contiene los datos de la respuesta (obligatoria)
+        /// <summary>
+        /// Datos de la respuesta (obligatorio).
+        /// </summary>
         [Required]
         public IEnumerable<T> data { get; set; }
 
-        // Propiedad que representa el código de estado HTTP de la respuesta (obligatoria)
+        /// <summary>
+        /// Código de estado HTTP de la respuesta (obligatorio).
+        /// </summary>
         [Required]
         public int status_code { get; set; }
     }
-
-
-
 }

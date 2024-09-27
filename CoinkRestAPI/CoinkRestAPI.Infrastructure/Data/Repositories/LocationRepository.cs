@@ -4,12 +4,23 @@ using Npgsql;
 
 namespace CoinRestAPI.Infrastructure.Data.Repositories
 {
+    /// <summary>
+    /// Repositorio para manejar operaciones relacionadas con ubicaciones.
+    /// </summary>
     public class LocationRepository : ConnectionRepository, ILocationRepository
     {
+        /// <summary>
+        /// Constructor del repositorio de ubicaciones.
+        /// </summary>
+        /// <param name="configuration">Configuración de la aplicación.</param>
         public LocationRepository(IConfiguration configuration) : base(configuration)
         {
         }
 
+        /// <summary>
+        /// Obtiene todos los países de la base de datos.
+        /// </summary>
+        /// <returns>Una colección de países.</returns>
         public async Task<IEnumerable<Country>> GetCountriesAsync()
         {
             using var connection = new NpgsqlConnection(_connectionString);
@@ -28,6 +39,11 @@ namespace CoinRestAPI.Infrastructure.Data.Repositories
             return countries;
         }
 
+        /// <summary>
+        /// Obtiene los estados/departamentos de un país específico.
+        /// </summary>
+        /// <param name="countryId">ID del país.</param>
+        /// <returns>Una colección de estados/departamentos del país especificado.</returns>
         public async Task<IEnumerable<State>> GetStatesByCountryAsync(string countryId)
         {
             using var connection = new NpgsqlConnection(_connectionString);
@@ -48,6 +64,11 @@ namespace CoinRestAPI.Infrastructure.Data.Repositories
             return states;
         }
 
+        /// <summary>
+        /// Obtiene las ciudades/municipios de un estado/departamento específico.
+        /// </summary>
+        /// <param name="stateId">ID del estado/departamento.</param>
+        /// <returns>Una colección de ciudades/municipios del estado/departamento especificado.</returns>
         public async Task<IEnumerable<City>> GetCitiesByStateAsync(int stateId)
         {
             using var connection = new NpgsqlConnection(_connectionString);

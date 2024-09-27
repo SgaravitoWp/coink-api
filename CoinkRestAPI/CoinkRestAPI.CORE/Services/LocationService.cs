@@ -17,14 +17,14 @@ namespace CoinRestAPI.CORE.Services
             return await _locationRepository.GetCountriesAsync();
         }
 
-        public async Task<IEnumerable<State>> GetStatesByCountryAsync(string countryId)
+        public async Task<IEnumerable<State>> GetStatesByCountryAsync(string country_id)
         {
-            return await _locationRepository.GetStatesByCountryAsync(countryId);
+            return await _locationRepository.GetStatesByCountryAsync(country_id);
         }
 
-        public async Task<IEnumerable<City>> GetCitiesByStateAsync(int stateId)
+        public async Task<IEnumerable<City>> GetCitiesByStateAsync(int state_id)
         {
-            return await _locationRepository.GetCitiesByStateAsync(stateId);
+            return await _locationRepository.GetCitiesByStateAsync(state_id);
         }
     }
 }

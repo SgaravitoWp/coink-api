@@ -1,58 +1,83 @@
 ﻿using System.ComponentModel.DataAnnotations;
+
 namespace CoinkRestAPI.CORE.DTOs
 {
+    /// <summary>
+    /// Clase que valida una petición GET de departamentos.
+    /// </summary>
+    public class StateGet
+    {
+        /// <summary>
+        /// ID del país requerido.
+        /// </summary>
+        [Required(ErrorMessage = "El ID del país es requerido.")]
+        public string country_id { get; set; }
+    }
 
-        // Clase que valida una peticion GET de departamentos. 
-        public class StateGet
-        {
-            // ID del país requerido
-            [Required(ErrorMessage = "The country ID is required.")]
-            public string country_id { get; set; }
-        }
+    /// <summary>
+    /// Clase que valida una petición GET de municipios.
+    /// </summary>
+    public class CityGet
+    {
+        /// <summary>
+        /// ID del departamento requerido.
+        /// </summary>
+        [Required(ErrorMessage = "El ID del departamento es requerido.")]
+        public int state_id { get; set; }
+    }
 
-        // Clase que valida una peticion GET de municipios. 
-        public class CityGet
-        {
-            // ID del departamento requerido. 
-            [Required(ErrorMessage = "The department ID is required.")]
-            public int state_id { get; set; }
-        }
+    /// <summary>
+    /// Clase que valida una petición POST para crear un usuario.
+    /// </summary>
+    public class UserPost
+    {
+        /// <summary>
+        /// ID del usuario requerido, debe contener entre 6 y 12 dígitos.
+        /// </summary>
+        [Required(ErrorMessage = "El ID del usuario es requerido.")]
+        [RegularExpression(@"^\d+$", ErrorMessage = "El ID del usuario solo puede contener dígitos.")]
+        [StringLength(12, MinimumLength = 6, ErrorMessage = "El ID del usuario debe tener entre 6 y 12 dígitos.")]
+        public string user_id { get; set; }
 
-        // Clase que valida una peticion POST de para crear un usuario. 
-        public class UserPost
-        {
+        /// <summary>
+        /// Nombre del usuario requerido, con una longitud máxima de 100 caracteres.
+        /// </summary>
+        [Required(ErrorMessage = "El nombre es requerido.")]
+        [StringLength(100, ErrorMessage = "El nombre no puede exceder los 100 caracteres.")]
+        public string name { get; set; }
 
-            [Required(ErrorMessage = "The user id is required.")]
-            public int user_id { get; set; }
-            // Nombre del usuario requerido, con una longitud máxima de 100 caracteres
-            [Required(ErrorMessage = "The name is required.")]
-            [StringLength(100, ErrorMessage = "The name cannot exceed 100 characters.")]
-            public string name { get; set; }
+        /// <summary>
+        /// Número de teléfono requerido, debe contener entre 10 y 15 dígitos.
+        /// </summary>
+        [Required(ErrorMessage = "El número de teléfono es requerido.")]
+        [RegularExpression(@"^\d+$", ErrorMessage = "El número de teléfono solo puede contener dígitos.")]
+        [StringLength(15, MinimumLength = 10, ErrorMessage = "El número de teléfono debe tener entre 10 y 15 dígitos.")]
+        public string phone { get; set; }
 
-            // Número de teléfono requerido, con una longitud máxima de 20 caracteres
-            [Required(ErrorMessage = "The phone number is required.")]
-            [RegularExpression(@"^\d+$", ErrorMessage = "The phone number can only contain digits.")]
-            [StringLength(20, ErrorMessage = "The phone number must be between 10 and 15 digits.")]
-            public string phone { get; set; }
+        /// <summary>
+        /// Dirección requerida, con una longitud máxima de 255 caracteres.
+        /// </summary>
+        [Required(ErrorMessage = "La dirección es requerida.")]
+        [StringLength(255, ErrorMessage = "La dirección no puede exceder los 255 caracteres.")]
+        public string address { get; set; }
 
-            // Dirección requerida, con una longitud máxima de 255 caracteres
-            [Required(ErrorMessage = "The address is required.")]
-            [StringLength(255, ErrorMessage = "The address cannot exceed 255 characters.")]
-            public string address { get; set; }
+        /// <summary>
+        /// ID del país requerido, debe tener exactamente 3 caracteres.
+        /// </summary>
+        [Required(ErrorMessage = "El ID del país es requerido.")]
+        [StringLength(3, MinimumLength = 3, ErrorMessage = "El ID del país debe tener exactamente 3 caracteres.")]
+        public string country_id { get; set; }
 
-            // ID del país requerido, con una longitud de 3 caracteres
-            [Required(ErrorMessage = "The country ID is required.")]
-            [StringLength(3, ErrorMessage = "The country ID must be 3 characters long.")]
-            public string country_id { get; set; }
+        /// <summary>
+        /// ID del departamento requerido.
+        /// </summary>
+        [Required(ErrorMessage = "El ID del departamento es requerido.")]
+        public int state_id { get; set; }
 
-            // ID del departamento requerido
-            [Required(ErrorMessage = "The department ID is required.")]
-            public int state_id { get; set; }
-
-            // ID del municipio requerido
-            [Required(ErrorMessage = "The city ID is required.")]
-            public int city_id { get; set; }
-        }
-    
-
+        /// <summary>
+        /// ID del municipio requerido.
+        /// </summary>
+        [Required(ErrorMessage = "El ID del municipio es requerido.")]
+        public int city_id { get; set; }
+    }
 }

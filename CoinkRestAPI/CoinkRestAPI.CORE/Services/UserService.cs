@@ -14,10 +14,10 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public async Task<User> CreateUserAsync(UserPost userDto)
+    public async Task<User> CreateUserAsync(UserPost user)
     {
         // Aquí iría la lógica de negocio, como validaciones
-        return await _userRepository.CreateUserAsync(userDto);
+        return await _userRepository.CreateUserAsync(user);
     }
 
 }

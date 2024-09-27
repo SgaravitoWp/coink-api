@@ -2,83 +2,122 @@
 
 namespace CoinkRestAPI.CORE.Entities
 {
+    /// <summary>
+    /// Clase que representa a un usuario en el sistema.
+    /// </summary>
     public class User 
     {
-
-        // Propiedad que representa el ID del usuario en DB 
+        /// <summary>
+        /// ID del usuario en la base de datos.
+        /// </summary>
         [Required]
         public string id { get; set; }
 
-        // Numero de documento del usuario 
+        /// <summary>
+        /// Número de documento del usuario.
+        /// </summary>
         [Required]
-        public int user_id { get; set; }
+        public string user_id { get; set; }
 
-        // Nombre del usuario
+        /// <summary>
+        /// Nombre del usuario.
+        /// </summary>
         [Required]
         public string name { get; set; }
 
-        // Número de teléfono. 
+        /// <summary>
+        /// Número de teléfono del usuario.
+        /// </summary>
         [Required]
         public string phone { get; set; }
 
-        // Dirección del usuario. 
+        /// <summary>
+        /// Dirección del usuario.
+        /// </summary>
         [Required]
         public string address { get; set; }
 
-        // ID del país 
+        /// <summary>
+        /// ID del país del usuario.
+        /// </summary>
         [Required]
         public string country_id { get; set; }
 
-        // ID del departamento 
+        /// <summary>
+        /// ID del departamento del usuario.
+        /// </summary>
         [Required]
         public int state_id { get; set; }
 
-        // ID del municipio 
+        /// <summary>
+        /// ID del municipio del usuario.
+        /// </summary>
         [Required]
         public int city_id { get; set; }
-
     }
 
-    // Clase que representa un país
+    /// <summary>
+    /// Clase que representa un país.
+    /// </summary>
     public class Country
     {
-        // ID del país 
+        /// <summary>
+        /// ID del país.
+        /// </summary>
         [Required]
         public string id { get; set; }
 
-        // Nombre del país 
+        /// <summary>
+        /// Nombre del país.
+        /// </summary>
         [Required]
         public string name { get; set; }
     }
 
-    // Clase que representa un departamento, heredando de StateGet
+    /// <summary>
+    /// Clase que representa un departamento o estado.
+    /// </summary>
     public class State 
     {
-        // ID del departamento 
+        /// <summary>
+        /// ID del departamento.
+        /// </summary>
         [Required]
         public int id { get; set; }
 
-        // Nombre del departamento 
+        /// <summary>
+        /// Nombre del departamento.
+        /// </summary>
         [Required]
         public string name { get; set; }
 
-        // ID del país. 
+        /// <summary>
+        /// ID del país al que pertenece el departamento.
+        /// </summary>
         [Required]
         public string country_id { get; set; }
     }
 
-    // Clase que representa una municipio, heredando de CityGet
+    /// <summary>
+    /// Clase que representa un municipio o ciudad.
+    /// </summary>
     public class City 
     {
-        // ID del municipio (requerida)
+        /// <summary>
+        /// ID del municipio.
+        /// </summary>
         [Required]
         public int id { get; set; }
 
-        // Nombre de la municipio 
+        /// <summary>
+        /// Nombre del municipio.
+        /// </summary>
         [Required]
         public string name { get; set; }
 
-        // ID del departamento. 
+        /// <summary>
+        /// ID del departamento al que pertenece el municipio.
+        /// </summary>
         [Required]
         public int state_id { get; set; }
     }

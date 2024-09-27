@@ -1,33 +1,45 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using CoinkRestAPI.CORE.Entities;
+﻿using Npgsql;
 using CoinkRestAPI.CORE.DTOs;
+using Microsoft.AspNetCore.Mvc;
+using CoinkRestAPI.CORE.Entities;
 using CoinkRestAPI.CORE.Interfaces;
-using Npgsql;
 
 namespace CoinRestAPI.API.Controllers
 {
+    /// <summary>
+    /// Controlador para manejar operaciones relacionadas con usuarios.
+    /// </summary>
     [ApiController]
     [Route("users")]
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
 
+        /// <summary>
+        /// Constructor del controlador de usuarios.
+        /// </summary>
+        /// <param name="userService">Servicio de usuarios inyectado.</param>
         public UsersController(IUserService userService)
         {
             _userService = userService;
         }
 
+        /// <summary>
+        /// Crea un nuevo usuario.
+        /// </summary>
+        /// <param name="user">Datos del usuario a crear.</param>
+        /// <returns>El usuario creado si la operación es exitosa.</returns>
         [HttpPost]
         [Route("createUser")]
         [ProducesResponseType(typeof(SuccessResponse<User>), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateUser([FromBody] UserPost userDto)
+        public async Task<IActionResult> CreateUser([FromBody] UserPost user)
         {
             string message;
             try
             {
-                var createdUser = await _userService.CreateUserAsync(userDto);
-                message = "User Created";
+                var createdUser = await _userService.CreateUserAsync(user);
+                message = "Usuario Creado";
                 return CreatedAtAction(nameof(CreateUser), new SuccessResponse<User>
                 {
                     success = true,
@@ -36,13 +48,13 @@ namespace CoinRestAPI.API.Controllers
                     status_code = 201
                 });
             }
-            catch (PostgresException ex) when (ex.SqlState == "23505") // Código de error para violación de clave única
+            catch (PostgresException ex) when (ex.SqlState == "23505") 
             {
-                message = "User already registered.";
+                message = "Usuario ya registrado.";
             }
-            catch (PostgresException ex) when (ex.SqlState == "40000") // Código de error personalizado para la no correspondencia de locaciones. 
+            catch (PostgresException ex) when (ex.SqlState == "40000") 
             {
-                message = "Invalid data insertion. Verify that the location identifiers match";
+                message = "Inserción de datos inválida. Verifique que los identificadores de ubicación coincidan.";
             }
 
             return BadRequest(new ErrorResponse
@@ -51,7 +63,6 @@ namespace CoinRestAPI.API.Controllers
                 title = message,
                 status = 400
             });
-
         }
     }
 }
