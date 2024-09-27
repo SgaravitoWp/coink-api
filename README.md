@@ -62,7 +62,7 @@ En el directorio `/CoinkRestAPI`, ejecute los siguientes comandos para configura
 dotnet user-secrets init
 dotnet user-secrets set "HOST" "Su_host"
 dotnet user-secrets set "USERNAME" "Su_username"
-dotnet user-secrets set "PASSWORD" "Su_contraseña"
+dotnet user-secrets set "PWD" "Su_contraseña"
 ````
 
 
