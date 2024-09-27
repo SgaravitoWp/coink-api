@@ -33,7 +33,7 @@ La Coink Rest API es una aplicación de interfaz de programación de aplicacione
    Nota: Se garantiza un registro único por usuario basado en `user_id` y `country_id`.
 
 2. **Consulta de Información Geográfica:**
-   Proporciona endpoints para consultar los identificadores de países, departamentos/estados y ciudades, facilitando el proceso de registro. Se incluyen datos para Colombia y algunos de España con fines de prueba.
+   Proporciona endpoints para consultar los identificadores de países, departamentos/estados y ciudades/municipios, facilitando el proceso de registro. Se incluyen datos para Colombia y algunos de España con fines de prueba.
 
 Para una documentación detallada de los endpoints y sus funcionalidades, por favor consulte la documentación Swagger disponible en la ruta `/swagger`.
 

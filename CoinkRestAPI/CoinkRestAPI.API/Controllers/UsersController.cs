@@ -39,7 +39,7 @@ namespace CoinRestAPI.API.Controllers
             try
             {
                 var createdUser = await _userService.CreateUserAsync(user);
-                message = "Usuario Creado";
+                message = "User Created.";
                 return CreatedAtAction(nameof(CreateUser), new SuccessResponse<User>
                 {
                     success = true,
@@ -50,11 +50,11 @@ namespace CoinRestAPI.API.Controllers
             }
             catch (PostgresException ex) when (ex.SqlState == "23505") 
             {
-                message = "Usuario ya registrado.";
+                message = "User already registered.";
             }
             catch (PostgresException ex) when (ex.SqlState == "40000") 
             {
-                message = "Inserción de datos inválida. Verifique que los identificadores de ubicación coincidan.";
+                message = "Invalid data insertion. Verify that the location identifiers match.";
             }
 
             return BadRequest(new ErrorResponse

@@ -36,7 +36,7 @@ namespace CoinRestAPI.API.Controllers
             return Ok(new SuccessResponse<Country>
             {
                 success = true,
-                message = "Países",
+                message = "Countries",
                 data = countries,
                 status_code = 200
             });
@@ -54,7 +54,7 @@ namespace CoinRestAPI.API.Controllers
         public async Task<IActionResult> ListStates([FromQuery] StateGet state)
         {
             var states = await _locationService.GetStatesByCountryAsync(state.country_id);
-            string message = states.Any() ? "Estados" : "No se encontraron estados para los datos proporcionados.";
+            string message = states.Any() ? "States" : "No states were found for the data provided.";
             return Ok(new SuccessResponse<State>
             {
                 success = true,
@@ -76,7 +76,7 @@ namespace CoinRestAPI.API.Controllers
         public async Task<IActionResult> ListCities([FromQuery] CityGet city)
         {
             var cities = await _locationService.GetCitiesByStateAsync(city.state_id);
-            string message = cities.Any() ? "Ciudades" : "No se encontraron ciudades para los datos proporcionados.";
+            string message = cities.Any() ? "Cities" : "No cities were found for the data provided.";
             return Ok(new SuccessResponse<City>
             {
                 success = true,
